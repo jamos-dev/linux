@@ -1,0 +1,9 @@
+#!/bin/sh
+
+mount -t proc proc /proc
+#mount -t sysfs none /sys
+
+mknod /dev/tty c 5 0
+mknod /dev/tty0 c 4 0
+
+setsid sh -c 'exec sh </dev/tty0 >/dev/tty0 2>&1'
